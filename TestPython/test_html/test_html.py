@@ -1,7 +1,9 @@
 #coding=utf8
-import HTMLParser
+from HTMLParser import HTMLParser
+from htmlentitydefs import name2codepoint
 
 class MyHTMLParser(HTMLParser):
+
     def handle_starttag(self, tag, attrs):
         print('<%s>' % tag)
 
@@ -12,10 +14,10 @@ class MyHTMLParser(HTMLParser):
         print('<%s/>' % tag)
 
     def handle_data(self, data):
-        print(data)
+        print('data')
 
     def handle_comment(self, data):
-        print('<!--', data, '-->')
+        print('<!-- -->')
 
     def handle_entityref(self, name):
         print('&%s;' % name)
@@ -24,9 +26,5 @@ class MyHTMLParser(HTMLParser):
         print('&#%s;' % name)
 
 parser = MyHTMLParser()
-parser.feed('''<html>
-<head></head>
-<body>
-<!-- test html parser -->
-    <p>Some <a href=\"#\">html</a> HTML&nbsp;tutorial...<br>END</p>
-</body></html>''')
+parser.feed('<html><head></head><body><p>Some <a href=\"#\">html</a> tutorial...<br>END</p></body></html>')
+#feed()方法可以多次调用，也就是不一定一次把整个HTML字符串都塞进去，可以一部分一部分塞进去

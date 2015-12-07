@@ -10,3 +10,4 @@ for i in sys.argv[1:]:
      strcanshu = str(i)
      print  'di',n,'ge canshu shi',strcanshu
      n = n + 1
+print 'testing'
