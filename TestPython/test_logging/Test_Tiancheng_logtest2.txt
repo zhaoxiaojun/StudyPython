@@ -1,0 +1,8 @@
+2015-12-03 18:37:40,795 - test2.py[line:28] - ERROR - integer division or modulo by zero
+Traceback (most recent call last):
+  File "test2.py", line 78, in <module>
+    a = 1 / 0
+ZeroDivisionError: integer division or modulo by zero
+2015-12-03 18:46:09,552 - test2.py[line:40] - DEBUG - exccc: ZeroDivisionError('integer division or modulo by zero',)
+2015-12-04 09:46:11,260 - test2.py[line:40] - DEBUG - exccc: ZeroDivisionError('integer division or modulo by zero',)
+2015-12-04 09:46:40,835 - test2.py[line:40] - DEBUG - exccc: ZeroDivisionError('integer division or modulo by zero',)
