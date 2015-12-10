@@ -40,7 +40,7 @@ def get_base64(data):
 
 def getde_base64(encrypted):
     '''
-    base64加密
+    base64解密
     '''
     data = base64.b64decode(encrypted)
     return data

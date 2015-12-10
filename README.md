@@ -1,2 +1,0 @@
-# StudyPython
-python学习
