@@ -1,4 +1,8 @@
 #coding=utf8
+'''
+python经典(老实)类的搜索方式是按照“从左至右，深度优先”的方式去查找属性
+'''
+
 class Employee:
     pass
 
