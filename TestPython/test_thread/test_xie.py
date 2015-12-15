@@ -1,8 +1,6 @@
 #coding=utf8
-#coding=utf8
 #线程同步对象: 信号量 semaphore   线程同步
 import threading, time, random
-
 
 
 #数据写入

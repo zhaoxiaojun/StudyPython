@@ -1,57 +1,30 @@
 #coding=utf8
-import MySQLdb
+import mysql.connector
+'''
+MySQL官方提供了mysql-connector-python驱动
+安装: pip install mysql-connector-python --allow-external mysql-connector-python
+'''
 
-try:
-    conn=MySQLdb.connect(host='192.168.18.69',user='root',passwd='niiwooroot',port=3306,charset='utf8')  #连接数据库
-    conn.select_db('ubas_tianchengtest')  #选择数据库
-    cur=conn.cursor()
-    #conn2=MySQLdb.connect(host='192.168.18.69',user='root',passwd='niiwooroot',port=3306,charset='utf8')  #连接数据库
-    #conn2.select_db('ups')  #选择数据库
+conn = mysql.connector.connect(host='192.168.18.85', port=3306, user='write', password='tc12345', database='ubas_tianchengtest', charset='utf8')
+cursor = conn.cursor()
 
+#创建user表:
+#cursor.execute('create table user (id varchar(20) primary key, name varchar(20))')
 
+#插入一行记录，注意MySQL的占位符是%s:
+#cursor.execute('insert into user (id, name) values (%s, %s)', ('1', 'Michael'))
+#print('rowcount =', cursor.rowcount)
 
-    #conn.select_db('ups')
-    #cur=conn.cursor()
-    whwh = 505
-    count = cur.execute("SELECT UserID,Title,BorrowerAmount,BorrowerRate FROM postmodifyloaneevent WHERE id = %s", (whwh,))
-    print 'count there has %s rows record' % count
+#提交事务:
+#conn.commit()
+#cursor.close()
 
-    #cur2=conn2.cursor()
-    #count2 = cur2.execute("SELECT UserID, RealName, Idcard, result, message FROM verifyrealnameevent20150907")
-    #print 'count2 there has %s rows record' % count2
+#运行查询:
+cursor = conn.cursor()
+cursor.execute('select * from userbasicinfo where UserID = %s', ('00003b76-1fef-44f9-84b9-72cb19151101',))
+values = cursor.fetchall()
+print(values)
 
-
-    #query_str = "INSERT INTO userbasicinfo(UserId,UserType,UserStatus,LoginFromOthers) VALUES(%s,%s,%s,%s)"
-    #query_value = ('test12345-902a6670-73b9-11e5-80b7-b083fe6509c401', 1, 0, 'QQ')
-    #cur.execute(query_str, query_value)
-
-    #count=cur.execute("SELECT UserId FROM userbasicinfo WHERE UserId = %s", ('test12345-902a6670-73b9-11e5-80b7-b083fe6509c412',))
-    #print 'there has %s rows record' % count
-
-    result = cur.fetchone()
-    print 'result type: ', type(result)
-    print 'result: ',result
-
-    #result=cur.fetchmany(2)
-    #print 'result type: ', type(result)
-    #print 'result: ',result
-
-    #result=cur.fetchall()
-    #print 'result type: ', type(result)
-    #print 'result: ',result
-
-    #result2=cur2.fetchone()
-    #print 'result2: ',result2
-
-    #print type(result)
-    #conn.commit()
-    cur.close()
-    conn.close()
-    #cur2.close()
-    #conn2.close()
-
-
-except MySQLdb.Error as e:
-     print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-     raise
-
+# 关闭Cursor和Connection:
+cursor.close()
+conn.close()

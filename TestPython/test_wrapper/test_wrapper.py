@@ -1,4 +1,7 @@
 #coding=utf8
+'''
+基本用法
+'''
 import time
 
 def timeit(func):
@@ -14,25 +17,7 @@ def foo():
     print 'in foo()'
 
 foo()
-
-print '\n---内置装饰器---'
-class Rabbit(object):
-
-    def __init__(self, name):
-        self._name = name
-
-    @staticmethod    #静态方法
-    def newRabbit(name):
-        return Rabbit(name)
-
-    @classmethod   #类方法
-    def newRabbit2(cls):
-        return Rabbit('')
-
-    @property    #类属性
-    def name(self):
-        return self._name
-
+print foo.__name__
 
 
 print '\n---functools---'
@@ -53,3 +38,22 @@ def foo():
 
 foo()
 print foo.__name__
+
+
+print '\n---内置装饰器---'
+class Rabbit(object):
+
+    def __init__(self, name):
+        self._name = name
+
+    @staticmethod    #静态方法
+    def newRabbit(name):
+        return Rabbit(name)
+
+    @classmethod   #类方法
+    def newRabbit2(cls):
+        return Rabbit('')
+
+    @property    #类属性
+    def name(self):
+        return self._name

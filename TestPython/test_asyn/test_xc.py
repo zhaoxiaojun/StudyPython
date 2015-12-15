@@ -1,5 +1,6 @@
 #coding=utf8
 
+# 基于生成器的协程
 def consumer():
     r = ''
     while True:

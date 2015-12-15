@@ -39,7 +39,7 @@ if __name__ == '__main__':
     print o.send(1)  #调用send传入非None值前，生成器必须处于挂起状态(至少生成过一次值)，否则将抛出异常。不过，未启动的生成器仍可以使用None作为参数调用send。
     print o.send(223)
     print o.send(353)
-    print o.close()   #这个方法用于关闭生成器。对关闭的生成器后再次调用next或send将抛出StopIteration异常
+    #print o.close()   #这个方法用于关闭生成器。对关闭的生成器后再次调用next或send将抛出StopIteration异常
     #print o.send(None)
     #print o.send(1)
 
