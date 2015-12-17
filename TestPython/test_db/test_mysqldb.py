@@ -12,8 +12,8 @@ try:
 
     #conn.select_db('ups')
     #cur=conn.cursor()
-    whwh = 505
-    count = cur.execute("SELECT UserID,Title,BorrowerAmount,BorrowerRate FROM postmodifyloaneevent WHERE id = %s", (whwh,))
+    whwh = 1
+    count = cur.execute("SELECT UserID,Title,BorrowerAmount,BorrowerRate FROM postmodifyloaneevent WHERE SourceID = %s", (whwh,))
     print 'count there has %s rows record' % count
 
     #cur2=conn2.cursor()
