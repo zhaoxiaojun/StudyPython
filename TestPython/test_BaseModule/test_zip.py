@@ -4,6 +4,7 @@ y = [4, 5, 6]
 z = [7, 8, 9]
 
 xyz = zip(x, y, z)
+print 'xyz:', xyz
 u = zip(*xyz)
 '''
 在运行zip(*xyz)之前，xyz的值是：[(1, 4, 7), (2, 5, 8), (3, 6, 9)]

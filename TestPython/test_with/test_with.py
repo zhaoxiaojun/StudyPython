@@ -43,11 +43,15 @@ class Sample:
         print "trace:", trace
 
     def do_something(self):
-        bar = 1/0
+        bar = 1/1
+        print 'bar:',bar
         return bar + 10
 
-with Sample() as sample:    #with后面的get_sample()变成了Sample()。这没有任何关系，只要紧跟with后面的语句所返回的对象有__enter__()和__exit__()方法即可
-    print sample.do_something()
+def testtt():
+    with Sample() as sample:    #with后面的get_sample()变成了Sample()。这没有任何关系，只要紧跟with后面的语句所返回的对象有__enter__()和__exit__()方法即可
+        return sample.do_something()
+
+testtt()
 '''
 异常抛出时，与之关联的type，value和stack trace传给__exit__()方法，因此抛出的ZeroDivisionError异常被打印出来
 '''
