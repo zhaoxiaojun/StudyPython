@@ -1,0 +1,1 @@
+{\"FunctionCode\":\"100122\",\"CurrentTime\":\"20150723203212000000\",\"MsgBody\":{\"identity_card\":\"003008196101160035\",\"idtype\":\"0\",\"name\":\"陈刚\",\"bank_cart\":\"12345\",\"reasonno\":\"04\",\"blackBox\":\"123\",\"ip\":\"192.168.1.122\",\"account_login\":\"test123\",\"mobile_phone\":\"18675559750\",\"creditAddress\":\"北京\"}}
