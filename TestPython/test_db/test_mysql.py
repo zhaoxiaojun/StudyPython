@@ -22,8 +22,8 @@ cursor = conn.cursor()
 #运行查询:
 cursor = conn.cursor()
 cursor.execute('select * from userbasicinfo where UserID = %s', ('00003b76-1fef-44f9-84b9-72cb19151101',))
-values = cursor.fetchall()
-print(values)
+values = cursor.fetchone()
+print type(values)
 
 # 关闭Cursor和Connection:
 cursor.close()

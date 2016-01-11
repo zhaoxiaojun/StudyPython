@@ -56,16 +56,17 @@ print len(message)
 print message
 
 credentials = pika.PlainCredentials('guest', 'guest')
-parameters = pika.ConnectionParameters('192.168.18.27',5672,'pub',credentials)
+parameters = pika.ConnectionParameters('192.168.18.77',5672,'pub',credentials)
 connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
-channel.exchange_declare(exchange='test_fanout', type='fanout')
 
-channel.queue_declare(queue='test_fanout', durable=False)
+channel.exchange_declare(exchange='QDP_ANRONG', type='fanout')
+
+channel.queue_declare(queue='QDP_ANRONG', durable=False)
 
 body = message
 
-channel.basic_publish(exchange='test_fanout',routing_key='',body=body)
+channel.basic_publish(exchange='QDP_ANRONG',routing_key='',body=body)
 
 print " [x] Sent %s" %body
 
