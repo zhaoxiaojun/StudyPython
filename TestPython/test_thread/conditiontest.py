@@ -1,6 +1,8 @@
 #coding=utf8
 # 条件变量   线程同步
 import threading, os
+
+
 class producer(threading.Thread):
     def __init__(self, threadname):
         threading.Thread.__init__(self, name=threadname)

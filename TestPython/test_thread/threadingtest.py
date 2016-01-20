@@ -41,6 +41,8 @@ print 'main'
 #print t.getName()  #打印线程名
 #t.setName('TT')  #设置线程名
 #print t.getName()
+#print t.ident  #线程的唯一标识。线程启动后就会有，线程退出后被回收
+
 
 #print threading.currentThread()  #返回当前的线程实例
 #print threading.enumerate()  #返回一个包含正在运行的线程的list
@@ -75,4 +77,11 @@ print t.getName()
 is/setDaemon(bool): 获取/设置是否守护线程。初始值从创建该线程的线程继承。当没有非守护线程仍在运行时，程序将终止。
 join([timeout]): 阻塞当前上下文环境的线程，直到调用此方法的线程终止或到达指定的timeout（可选参数）。
 '''
+"""
+
+"""
+threading.Timer: 定时器类。
+类的构造函数为threading.Timer(interval, function, args=[], kwargs={})
+interval是定时间隔，单位为秒，function是回调函数，args是传给function的参数列表。即，interval秒后，调用一次function，function的参数为args.
+注意function只会调用一次，不是每隔interval秒。
 """

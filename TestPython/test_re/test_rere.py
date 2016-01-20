@@ -7,7 +7,7 @@ re.compile(strPattern[, flag]):
 比如re.I | re.M。另外，你也可以在regex字符串中指定模式，比如re.compile('pattern', re.I | re.M)与re.compile('(?im)pattern')是等价的
 可选值有：
 re.I(re.IGNORECASE): 忽略大小写（括号内是完整写法，下同）
-M(MULTILINE): 多行模式，改变'^'和'$'的行为（参见上图）
+M(MULTILINE): 多行模式，改变'^'和'$'的行为
 S(DOTALL): 点任意匹配模式，改变'.'的行为
 L(LOCALE): 使预定字符类 \w \W \b \B \s \S 取决于当前区域设定
 U(UNICODE): 使预定字符类 \w \W \b \B \s \S \d \D 取决于unicode定义的字符属性

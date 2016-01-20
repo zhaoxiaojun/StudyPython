@@ -1,9 +1,0 @@
-eclipse.preferences.version=1
-encoding/client_socket.py=utf8
-encoding/cmd_client.py=utf8
-encoding/cmd_server.py=UTF8
-encoding/download.py=UTF8
-encoding/httpd_basehttpserver.py=UTF8
-encoding/httpd_socket.py=UTF8
-encoding/httpd_socketserver.py=UTF8
-encoding/socket_list.py=UTF8

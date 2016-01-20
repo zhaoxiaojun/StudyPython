@@ -5,7 +5,7 @@ import time
 # 商品
 product = None
 # 条件变量
-con = threading.Condition()
+  = threading.Condition()
 
 # 生产者方法
 def produce():
@@ -22,7 +22,7 @@ def produce():
 
             # 等待通知
             con.wait()
-            time.sleep(2)
+            time.sleep(1)
 
 # 消费者方法
 def consume():
@@ -39,9 +39,13 @@ def consume():
                             #notifyAll(): 调用这个方法将通知等待池中所有的线程，这些线程都将进入锁定池尝试获得锁定。调用这个方法不会释放锁定。使用前线程必须已获得锁定，否则将抛出异常。
             # 等待通知
             con.wait()   #wait([timeout]): 调用这个方法将使线程进入Condition的等待池等待通知，并释放锁。使用前线程必须已获得锁定，否则将抛出异常。
-            time.sleep(2)
+            time.sleep(3)
 
 t1 = threading.Thread(target=produce)
 t2 = threading.Thread(target=consume)
+#t3 = threading.Thread(target=consume)
+#t4 = threading.Thread(target=consume)
+#t4.start()
+#t3.start()
 t2.start()
 t1.start()
