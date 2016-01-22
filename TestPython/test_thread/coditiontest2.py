@@ -5,7 +5,7 @@ import time
 # 商品
 product = None
 # 条件变量
-  = threading.Condition()
+con  = threading.Condition()
 
 # 生产者方法
 def produce():
@@ -43,7 +43,7 @@ def consume():
 
 t1 = threading.Thread(target=produce)
 t2 = threading.Thread(target=consume)
-#t3 = threading.Thread(target=consume)
+t3 = threading.Thread(target=consume)
 #t4 = threading.Thread(target=consume)
 #t4.start()
 #t3.start()
