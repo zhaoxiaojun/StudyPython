@@ -10,7 +10,7 @@ f.write(u'\n')
 f.write(u'world!')
 
 
-print ff.getvalue().split()[0]  #getvalue()方法用于获得写入后的str
+print f.getvalue().split()[1]  #getvalue()方法用于获得写入后的str
 
 
 

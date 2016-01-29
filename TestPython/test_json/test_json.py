@@ -36,3 +36,31 @@ print 'dataDict: ', dataDict
 
 data = json.dumps(dataDict)    #python对象 -->  json字符串
 print 'data: ', data
+print '\n----------------'
+
+datad = {'水电费sdsdg中文':'水电费sdsdg中文'}
+datazs = json.dumps(datad)
+print 'datazs: ',datazs
+print 'type of datazs: ', type(datazs)
+
+datazu = datazs.decode('gbk')
+print 'datazu: ',datazu
+print 'type of datazu: ', type(datazu)
+print '\n----------------'
+
+datazu1 = json.loads(datazu)
+print 'datazu1: ',datazu1
+print 'type of datazu1: ', type(datazu1)
+
+datazu2 = json.dumps(datazu1)
+print 'datazu2: ',datazu2
+print 'type of datazu2: ', type(datazu2)
+
+datazu3 = datazu2.decode('gbk')
+print 'datazu3: ',datazu3
+print 'type of datazu3: ', type(datazu3)
+
+
+
+
+
