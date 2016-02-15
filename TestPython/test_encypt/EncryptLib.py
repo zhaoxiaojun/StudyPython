@@ -1,4 +1,7 @@
 #coding=utf8
+import crypto
+import sys
+sys.modules['Crypto'] = crypto
 from Crypto.Cipher import AES
 import base64
 import os

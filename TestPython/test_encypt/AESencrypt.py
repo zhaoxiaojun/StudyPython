@@ -1,7 +1,12 @@
 #coding=utf8
+import crypto
+import sys
+sys.modules['Crypto'] = crypto
 from Crypto.Cipher import AES
 import hashlib
 import base64
+from binascii import b2a_hex, a2b_hex
+
 
 def get_sha1(data):
     '''
@@ -10,6 +15,7 @@ def get_sha1(data):
     s = hashlib.sha1()
     s.update(data)
     return s.hexdigest()
+    #return s.digest()
 
 def aespks7b64_encrypt(data, key, iv):
     '''
@@ -20,6 +26,7 @@ def aespks7b64_encrypt(data, key, iv):
     pad_PKCS7 = lambda s: s + (BS - len(s) % BS) * '0'
     cipher = AES.new(key, AES.MODE_CBC, iv)
     encrypted = cipher.encrypt(pad_PKCS7(data))  #aes加密
+    #print 'encrypted: %s' % b2a_hex(encrypted)
     result = base64.b64encode(encrypted)  #base64 encode
     return result
 
@@ -41,6 +48,7 @@ def aespks5b64_encrypt(data, key, iv):
     pad_PKCS5 = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
     cipher = AES.new(key, AES.MODE_CBC, iv)
     encrypted = cipher.encrypt(pad_PKCS5(data))  #aes加密
+    #print 'encrypted: %s' % b2a_hex(encrypted)
     result = base64.b64encode(encrypted)  #base64 encode
     return result
 
@@ -67,10 +75,11 @@ if __name__ == '__main__':
     iv = key
 
     print '加密----------'
-    encrypted = aespks7b64_encrypt(data, key, iv)
-    #encrypted = get_sha1(data)
+    encrypted = aespks5b64_encrypt(data, key, iv)
+    encrypted = get_sha1(encrypted)
     print 'encrypted: ',encrypted
 
-    print '解密----------'
-    decrypted = aespks7b64_decode(encrypted, datalen, key, iv)
-    print 'decrypted: ',decrypted
+    # print '解密----------'
+    # decrypted = aespks5b64_decode(encrypted, key, iv)
+    # print 'decrypted: ',decrypted
+
