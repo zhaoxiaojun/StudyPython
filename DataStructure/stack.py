@@ -13,3 +13,9 @@ class Stack:
        return self.items[len(self.items)-1]
     def size(self):
        return len(self.items)
+
+if __name__ == '__main__':
+    SO = Stack()
+    SO.push(2)
+    SO.push(3)
+    print SO.pop()
