@@ -1,6 +1,9 @@
 #coding=utf8
 
 class BinHeap:
+    '''
+    二叉堆
+    '''
     def __init__(self):
         self.heap_list = [0]
         self.current_size = 0
@@ -47,3 +50,17 @@ class BinHeap:
             #build the heap we only need to deal the first part!
             self.perc_down(i)
             i=i-1
+
+
+if __name__ == '__main__':
+    a_list=[9, 6, 5, 2, 3];
+    bh=BinHeap();
+    bh.build_heap(a_list);
+    print(bh.heap_list)
+    print(bh.current_size)
+    bh.insert(10)
+    bh.insert(7)
+    print(bh.heap_list)
+    bh.del_min();
+    print(bh.heap_list)
+    print(bh.current_size)

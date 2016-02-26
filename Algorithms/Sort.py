@@ -76,6 +76,29 @@ def merge_sort(a_list):
     print("Merging ", a_list)
 
 
+def shell_sort(a_list):
+    '''
+    希尔排序
+    '''
+    #how many sublists, also how many elements in a sublist
+    sublist_count = len(a_list) // 2
+    while sublist_count > 0:
+        for start_position in range(sublist_count):
+            gap_insertion_sort(a_list, start_position, sublist_count)
+        print("After increments of size", sublist_count, "The list is", a_list)
+        sublist_count = sublist_count // 2
+
+def gap_insertion_sort(a_list, start, gap):
+    #start+gap is the second element in this sublist
+    for i in range(start + gap, len(a_list), gap):
+        current_value = a_list[i]
+        position = i
+        while position >= gap and a_list[position - gap] > current_value:
+            a_list[position] = a_list[position - gap] #move backward
+            position = position - gap
+            a_list[position] = current_value
+
+
 
 def quick_sort(a_list):
     '''
@@ -111,27 +134,7 @@ def partition(a_list, first, last):
     return right_mark
 
 
-def shell_sort(a_list):
-    '''
-    希尔排序
-    '''
-    #how many sublists, also how many elements in a sublist
-    sublist_count = len(a_list) // 2
-    while sublist_count > 0:
-        for start_position in range(sublist_count):
-            gap_insertion_sort(a_list, start_position, sublist_count)
-        print("After increments of size", sublist_count, "The list is", a_list)
-        sublist_count = sublist_count // 2
 
-def gap_insertion_sort(a_list, start, gap):
-    #start+gap is the second element in this sublist
-    for i in range(start + gap, len(a_list), gap):
-        current_value = a_list[i]
-        position = i
-        while position >= gap and a_list[position - gap] > current_value:
-            a_list[position] = a_list[position - gap] #move backward
-            position = position - gap
-            a_list[position] = current_value
 
 #桶排序
 
@@ -140,6 +143,7 @@ def gap_insertion_sort(a_list, start, gap):
 
 
 #计数排序
+
 
 if __name__ == '__main__':
     L = [23,34,57,3,2,3,86,45,6,9]
