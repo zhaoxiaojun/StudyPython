@@ -1,8 +1,9 @@
 #coding=utf8
-#Python对SMTP支持有smtplib和email两个模块，email负责构造邮件，smtplib负责发送邮件。
+#Python对SMTP支持有smtplib和email两个模块，email负责构造邮件（或解析邮件内容），smtplib负责发送邮件
 from email import encoders
 from email.header import Header
-from email.mime.text import MIMEText
+#from email.mime.text import MIMEText
+from email.MIMEText import MIMEText
 from email.utils import parseaddr, formataddr
 
 import smtplib

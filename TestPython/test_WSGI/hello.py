@@ -6,7 +6,6 @@ WSGI接口定义非常简单，它只要求Web开发者实现一个函数，就�
 '''
 
 
-
 def application(environ, start_response):
     '''
     application()函数就是符合WSGI标准的一个HTTP处理函数，它接收两个参数：

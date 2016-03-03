@@ -1,7 +1,8 @@
 #coding=utf8
 from email import encoders
 from email.header import Header
-from email.mime.text import MIMEText
+#from email.mime.text import MIMEText
+from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEBase import MIMEBase
 from email.utils import parseaddr, formataddr
@@ -17,7 +18,7 @@ def _format_addr(s):   #格式化一个邮件地址
         addr.encode('utf-8') if isinstance(addr, unicode) else addr))  #.. if .. else .. 结构
 
 from_addr = 'yzh87117835@163.com'
-password = '***'
+password = 'mC7uE5wJ_8528'
 to_addr = 'yechaohui@tuandai.com'
 smtp_server = 'smtp.163.com'
 
@@ -63,14 +64,3 @@ server.quit()
 
 
 
-'''
-构造一个邮件对象就是一个Messag对象，如果构造一个MIMEText对象，就表示一个文本邮件对象，如果构造一个MIMEImage对象，就表示一个作为附件的图片，要把多个对象组合
-起来，就用MIMEMultipart对象，而MIMEBase可以表示任何对象。它们的继承关系如下：
-Message
-+- MIMEBase
-   +- MIMEMultipart
-   +- MIMENonMultipart
-      +- MIMEMessage
-      +- MIMEText
-      +- MIMEImage
-'''

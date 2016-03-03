@@ -1,0 +1,12 @@
+Received: By test server from somewhere
+Received: By another server from my machine
+From: yechaohui@tuandai.com
+To: Test Sender <yechaohui@tuandai.com>
+Subject: =?utf-8?b?5p2l6IeqdGVzdF9NSU1FVGV4dC5weeeahOmXruWAmeKApg==?=
+Date: Thu, 03 Mar 2016 16:05:06 +0800
+Message-ID: <145699230694.11812.2313673803800777982@Defias-PC>
+
+Hello,
+This is a test massage from test_MIMEText.py
+
+-- Anonymous
