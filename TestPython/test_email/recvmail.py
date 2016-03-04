@@ -3,6 +3,7 @@ from email.parser import Parser
 from email.header import decode_header
 from email.utils import parseaddr
 import poplib
+import sys
 '''
 poplib模块收取邮件分两步：第一步是用POP3协议把邮件获取到本地，第二步是用email模块把原始邮件解析为Message对象，然后，用适当的形式把邮件内容展示给用户
 '''
@@ -12,10 +13,10 @@ poplib模块收取邮件分两步：第一步是用POP3协议把邮件获取到�
 #pop3_server = input('POP3 server: ')
 
 email = 'yzh87117835@163.com'
-password = '***'
+password = 'mC7uE5wJ_8528'
 pop3_server = 'pop3.163.com'
 
-
+###############################################################################################
 def guess_charset(msg):
     charset = msg.get_charset()
     if charset is None:
@@ -60,6 +61,10 @@ def print_info(msg, indent=0):
         else:
             print('%sAttachment: %s' % ('  ' * indent, content_type))
 
+###############################################################################################
+#邮件接收
+
+
 # 连接到POP3服务器:
 server = poplib.POP3(pop3_server)
 
@@ -69,9 +74,23 @@ server.set_debuglevel(1)
 # 可选:打印POP3服务器的欢迎文字:
 print(server.getwelcome().decode('utf-8'))
 
-# 身份认证
-server.user(email)
-server.pass_(password)
+try:
+    # 身份认证
+    server.user(email)
+    server.pass_(password)
+    '''
+    import getpass
+    password = getpass.getpass()  #用户输入的提示字符串，默认为：Password， 改变默认getpass.getpass(prompt='please input your password: ')
+    server.pass_(password)
+    '''
+    '''
+    APOP登录方式：
+    p.apop(email, password)
+    '''
+except poplib.error_proto, e:
+    print 'Login failed: ',e
+    sys.exit(-1)
+
 
 # stat()返回邮件数量和占用空间
 print('Messages: %s. Size: %s' % server.stat())

@@ -6,12 +6,13 @@ from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEBase import MIMEBase
 from email.utils import parseaddr, formataddr
-import smtplib
+
 '''
 发送带附件的邮件
 '''
 
-def _format_addr(s):   #格式化一个邮件地址
+#格式化一个邮件地址
+def _format_addr(s):
     name, addr = parseaddr(s)
     return formataddr(( \
         Header(name, 'utf-8').encode(), \
@@ -28,7 +29,7 @@ msg['To'] = _format_addr(u'管理员 <%s>' % to_addr)
 msg['Subject'] = Header(u'来自SMTP的问候……', 'utf-8').encode()
 
 #邮件正文是MIMEText:
-#msg.attach(MIMEText('send with file...', 'plain', 'utf-8'))
+msg.attach(MIMEText('send with file...', 'plain', 'utf-8'))
 
 '''
 把一个图片嵌入到邮件正文中
@@ -55,6 +56,10 @@ with open('test.jpg', 'rb') as f:
     #添加到MIMEMultipart:
     msg.attach(mime)
 
+
+###########################################################################################
+#邮件发送
+import smtplib
 
 server = smtplib.SMTP(smtp_server, 25)  #SMTP协议默认端口是25
 #server.set_debuglevel(1)  #打印出和SMTP服务器交互的所有信息

@@ -16,8 +16,9 @@ if __name__ == '__main__':
     #handler
     logfile = logging.FileHandler("./Test_Tiancheng_log.txt")
     logfile.setLevel(logging.DEBUG)
+
     control = logging.StreamHandler()
-    control.setLevel(logging.WARNING)
+    control.setLevel(logging.INFO)
 
 
     #formatter
