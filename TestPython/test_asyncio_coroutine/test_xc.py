@@ -1,6 +1,8 @@
 #coding=utf8
+#先理解生成器generator(test_generator)
 
-# 基于生成器的协程
+
+# 基于生成器的协程coroutine
 def consumer():
     r = ''
     while True:
@@ -9,6 +11,7 @@ def consumer():
             return
         print('[CONSUMER] Consuming %s...' % n)
         r = '200 OK'
+
 
 def produce(c):
     c.send(None)

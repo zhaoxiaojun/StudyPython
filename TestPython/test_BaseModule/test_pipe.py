@@ -1,5 +1,5 @@
 #coding=utf8
-from pipe import *
+from pipe import * #管道
 
 def feibolaqi(n):
     if n == 0 or n == 1:
