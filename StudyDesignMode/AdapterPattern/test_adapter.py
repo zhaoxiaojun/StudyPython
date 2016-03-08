@@ -1,4 +1,5 @@
 #coding=utf8
+#适配器模式
 
 class Adaptee:
     def specific_request(self):

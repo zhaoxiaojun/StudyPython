@@ -1,5 +1,5 @@
 #coding=utf8
-
+#抽象工厂模式
 """Implementation of the abstract factory pattern"""
 import random
 

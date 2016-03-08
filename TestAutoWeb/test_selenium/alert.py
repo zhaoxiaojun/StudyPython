@@ -5,7 +5,7 @@ driver = webdriver.Firefox()
 driver.implicitly_wait(10)
 driver.get('http://www.baidu.com')
 
-#鼠标悬停相“设置”链接
+#鼠标悬停“设置”链接
 link = driver.find_element_by_link_text(u'设置')
 ActionChains(driver).move_to_element(link).perform()
 

@@ -1,7 +1,5 @@
 #coding=utf8
 #树结点
-
-
 class TreeNode:
     def __init__(self,key,val,left=None,right=None,parent=None,balanceFactor=0):
         self.key = key

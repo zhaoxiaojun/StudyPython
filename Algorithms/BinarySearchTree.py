@@ -1,6 +1,5 @@
 #coding=utf8
 #二叉查找树
-
 from TreeNode import TreeNode
 
 class BinarySearchTree:
