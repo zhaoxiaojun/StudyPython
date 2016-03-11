@@ -36,4 +36,5 @@ print 'username',un
 pd = item.getAttribute("passwd")
 print 'passwd',pd
 
-#获得标签对之间的数据
+
+
