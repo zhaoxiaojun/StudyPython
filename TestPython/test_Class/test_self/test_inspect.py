@@ -1,6 +1,15 @@
 #coding=utf8
 import sys #  模块，sys指向这个模块对象
 import inspect
+"""
+inspect模块功能:
+1）对是否是模块，框架，函数等进行类型检查。
+2）获取源码
+3）获取类或函数的参数的信息
+4）解析堆栈
+"""
+
+
 def foo(): pass # 函数，foo指向这个函数对象
 
 class Cat(object): # 类，Cat指向这个类对象

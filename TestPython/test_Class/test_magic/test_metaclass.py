@@ -1,48 +1,10 @@
 #coding=utf8
 
-def echo(o):
-    print o
-
-class ObjectCreator(object):
-    pass
 '''
-将在内存中创建一个对象，名字就是ObjectCreator。这个对象（类）自身拥有创建对象（类实例）的能力，而这就是为什么它是一个类的原因。但是，它的本质仍然是一个对象。
-'''
-print ObjectCreator   #可以打印一个类，因为它其实也是一个对象
+元类： 就是用来创建类的“东西。type就是Python在背后用来创建所有类的元类
+type能动态的创建类，type可以接受一个类的描述作为参数，然后返回一个类
 
-echo(ObjectCreator)   #可以将类做为参数传给函数
-
-ObjectCreator.new_attribute = 'foo'  #可以为类增加属性
-print hasattr(ObjectCreator, 'new_attribute')
-
-ObjectCreatorMirror = ObjectCreator   #可以将类赋值给一个变量
-print ObjectCreatorMirror()
-
-my_object = ObjectCreator()
-print my_object
-
-
-
-#动态创建类
-def choose_class(name):
-    if name == 'foo':
-        class Foo(object):
-            pass
-        return Foo     #返回的是类，不是类的实例
-    else:
-        class Bar(object):
-            pass
-        return Bar
-
-MyClass = choose_class('foo')
-print MyClass
-print MyClass()
-
-
-'''
-type有一种完全不同的能力，它也能动态的创建类。type可以接受一个类的描述作为参数，然后返回一个类。
 type(类名, 父类的元组（针对继承的情况，可以为空），包含属性的字典（名称和值）)
-元类就是用来创建类的“东西。type就是Python在背后用来创建所有类的元类。
 '''
 
 MyShinyClass = type('MyShinyClass', (), {})   #返回一个类对象，等价于： class MyShinyClass(object): pass
@@ -54,27 +16,6 @@ FooChild = type('FooChild', (Foo,),{})  #等价于：class FooChild(Foo): pass
 
 print '\n------------------------\n'
 
-#对于任何一个__class__的__class__属性
-age = 35
-print age.__class__
-print age.__class__.__class__
-
-name = 'bob'
-print name.__class__
-print name.__class__.__class__
-
-def foo(): pass
-print foo.__class__
-print foo.__class__.__class__
-
-class Bar(object): pass
-print Bar.__class__
-print Bar.__class__.__class__
-
-b = Bar()
-print b.__class__
-print b.__class__.__class__
-print '\n------------------------\n'
 
 
 #type就是Python的内建元类，当然也可以创建自己的元类

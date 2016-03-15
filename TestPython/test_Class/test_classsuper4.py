@@ -1,6 +1,6 @@
 #coding=utf8
 
-#不要一说到 super 就想到父类！super 指的是 MRO 中的下一个类！
+#不要一说到super就想到父类！super指的是MRO中的下一个类！
 def super(cls, inst):
     mro = inst.__class__.mro()
     return mro[mro.index(cls)+1]

@@ -1,5 +1,5 @@
 #coding=utf8
-
+#通过__dict__共享属性的方式：
 
 class Borg:
     __shared_state = {}
@@ -12,6 +12,32 @@ class Borg:
 
 class YourBorg(Borg):
     pass
+#------------------------------------
+class Borg2(object):
+    """Subclassing is no problem."""
+    _shared_state = {}
+    def __new__(cls, *a, **k):
+        obj = super(Borg2, cls).__new__(cls, *a, **k)
+        obj.__dict__ = cls._shared_state
+        return obj
+
+# ---------- Borg's singletone ----------
+class Borg3:
+    __shared_state = {}
+
+    def __init__(self):
+        self.__dict__ = self.__shared_state
+
+a = Borg3()
+a.toto = 12
+
+b = Borg3()
+print b.toto
+print id(a), id(b)  # different ! but states are sames
+
+
+
+
 
 if __name__ == '__main__':
     rm1 = Borg()

@@ -8,7 +8,8 @@ class A(object):
 class B(A):
     def __init__(self):
         print("Enter B")
-        super(B, self).__init__()
+        #super(B, self).__init__()
+        A.__init__(self)
         print("Leave B")
 
 class C(A):
@@ -33,4 +34,5 @@ class E(B, C, D):
 #在super机制里可以保证公共父类仅被执行一次，至于执行的顺序，是按照mro进行的
 print E.__mro__
 
-e = E()
+#e = E()
+b = B()

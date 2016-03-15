@@ -1,4 +1,5 @@
 #coding=utf8
+#通过_new__的方式：
 
 # ---------- Singletone ----------
 # Real Singleton instance
@@ -8,44 +9,36 @@ class Singleton(object):
             type._the_instance = object.__new__(type)
         return type._the_instance
 
-a = Singleton()
-a.toto = 12
-
-b = Singleton()
-print b.toto
-print id(a), id(b)  # The same !!
-
-
-# ---------- Borg's singletone ----------
-class Borg:
-    __shared_state = {}
-
-    def __init__(self):
-        self.__dict__ = self.__shared_state
-
-a = Borg()
-a.toto = 12
-
-b = Borg()
-print b.toto
-print id(a), id(b)  # different ! but states are sames
-
-
-
+    def ppp(self,s):
+        return s
 
 # ---------- Alex's Martelli examples ----------
-
-class Singleton(object):
+class Singleton2(object):
     def __new__(cls, *a, **k):
         if not hasattr(cls, '_inst'):
-            cls._inst = super(Singleton, cls
-).__new__(cls, *a, **k)
+            #cls._inst = super(Singleton2, cls).__new__(cls, *a, **k)
+            cls._inst = object.__new__(cls, *a, **k)
         return cls._inst
 
-class Borg(object):
-    """Subclassing is no problem."""
-    _shared_state = {}
-    def __new__(cls, *a, **k):
-        obj = super(Borg, cls).__new__(cls, *a, **k)
-        obj.__dict__ = cls._shared_state
-        return obj
+    def ppp(self,s):
+        return s
+
+
+
+a = Singleton2()
+a.toto = 12
+
+b = Singleton2()
+
+
+print b.toto
+
+print id(a), id(b)  # The same !!
+
+print a.ppp('aaa')
+
+print b.ppp('bbb')
+
+
+
+
