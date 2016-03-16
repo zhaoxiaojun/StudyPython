@@ -1,65 +1,39 @@
 #coding=utf8
-#通过__dict__共享属性的方式：
+"""
+方法2：共享属性
+所谓单例就是所有引用(实例、对象)拥有相同的状态(属性)和行为(方法)，同一个类的所有实例天然拥有相同的行为(方法),只需要保证同一个类的所有实例具有相同的状态(属性)
+即可，所有实例共享属性的最简单最直接的方法就是__dict__属性指向(引用)同一个字典(dict)
+"""
 
-class Borg:
-    __shared_state = {}
-    def __init__(self):
-        self.__dict__ = self.__shared_state
-        self.state = 'Init'
-
-    def __str__(self):
-        return self.state
-
-class YourBorg(Borg):
-    pass
-#------------------------------------
-class Borg2(object):
-    """Subclassing is no problem."""
-    _shared_state = {}
+class Borg(object):
+    _state = {}
     def __new__(cls, *a, **k):
-        obj = super(Borg2, cls).__new__(cls, *a, **k)
-        obj.__dict__ = cls._shared_state
+        obj = super(Borg, cls).__new__(cls, *a, **k)
+        obj.__dict__ = cls._state
         return obj
 
-# ---------- Borg's singletone ----------
-class Borg3:
-    __shared_state = {}
-
-    def __init__(self):
-        self.__dict__ = self.__shared_state
-
-a = Borg3()
-a.toto = 12
-
-b = Borg3()
-print b.toto
-print id(a), id(b)  # different ! but states are sames
+class MyClass(Borg):
+    a = 1
 
 
+one = MyClass()
+two = MyClass()
 
+two.a = 3
+print one.a
 
+#one和two是不同的对象
+print id(one)
+print id(two)
+print one == two
+print one is two
 
-if __name__ == '__main__':
-    rm1 = Borg()
-    rm2 = Borg()
+#但是one和two具有相同的属性字典
+print one.__dict__
+print two.__dict__
 
-    rm1.state = 'Idle'
-    rm2.state = 'Running'
+print id(one.__dict__)
 
-    print('rm1: {0}'.format(rm1))
-    print('rm2: {0}'.format(rm2))
+print id(two.__dict__)
 
-    rm2.state = 'Zombie'
-
-    print('rm1: {0}'.format(rm1))
-    print('rm2: {0}'.format(rm2))
-
-    print('rm1 id: {0}'.format(id(rm1)))
-    print('rm2 id: {0}'.format(id(rm2)))
-
-    rm3 = YourBorg()
-
-    print('rm1: {0}'.format(rm1))
-    print('rm2: {0}'.format(rm2))
-    print('rm3: {0}'.format(rm3))
 

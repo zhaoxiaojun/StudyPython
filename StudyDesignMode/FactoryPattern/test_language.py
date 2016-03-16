@@ -1,33 +1,27 @@
 #coding=utf8
 
-class JapaneseGetter:
-    """A simple localizer a la gettext"""
-
+class ChaneseGetter(object):
     def __init__(self):
-        self.trans = dict(dog="犬", cat="猫")
+        self.trans = dict(dog="犬", cat="猫", parrot= "鹦鹉")
 
     def get(self, msgid):
-        """We'll punt if we don't have a translation"""
         try:
             return unicode(self.trans[msgid], "utf-8")
         except KeyError:
             return unicode(msgid)
 
-class EnglishGetter:
-    """Simply echoes the msg ids"""
+class EnglishGetter(object):
     def get(self, msgid):
         return unicode(msgid)
 
-def get_localizer(language="English"):
-    """The factory method"""
-    languages = dict(English=EnglishGetter,
-                     Japanese=JapaneseGetter)
 
+def get_localizer(language="English"):
+    languages = {"English": EnglishGetter, "Chanese": ChaneseGetter}
     return languages[language]()
 
-# Create our localizers
-e, j = get_localizer("English"), get_localizer("Japanese")
+e = get_localizer("English")
+c = get_localizer("Chanese")
 
-# Localize some text
+
 for msgid in "dog parrot cat".split():
-    print e.get(msgid), j.get(msgid)
+    print e.get(msgid), c.get(msgid)

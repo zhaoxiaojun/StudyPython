@@ -1,5 +1,8 @@
 #coding=utf8
-#通过使用装饰器的方式：
+"""
+方法4：也是方法1的升级（高级）版本
+使用装饰器(decorator),这是一种更pythonic,更elegant的方法,单例类本身根本不知道自己是单例的,因为他本身(自己的代码)并不是单例的
+"""
 
 def singleton(cls, *args, **kw):
     instances = {}
@@ -19,12 +22,10 @@ one = MyClass4()
 two = MyClass4()
 
 two.a = 3
-
 print one.a
 
-print id(one)
+print id(one)   # The same !!
 print id(two)
-
 
 print one == two
 print one is two

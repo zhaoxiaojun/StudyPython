@@ -3,6 +3,15 @@ import urllib2
 '''
 提供一些复杂的接口用于处理： 基本认证，重定向，Cookies等
 '''
+
+import cookielib
+"""
+cookielib 模块的主要作用是提供可存储 cookie 的对象，以便于与 urllib2 模块配合使用来访问 Internet 资源。Cookielib 模块非常强大，我们可以利用本模块的 CookieJar
+类的对象来捕获 cookie 并在后续连接请求时重新发送，比如可以实现模拟登录功能。该模块主要的对象有 CookieJar、FileCookieJar、MozillaCookieJar、LWPCookieJar。
+它们的关系：CookieJar —-派生—->FileCookieJar —-派生—–>MozillaCookieJar 和LWPCookieJar
+"""
+
+
 　
 '''
 原型：urllib2.build_opener([handler, ...])
@@ -39,12 +48,40 @@ print '\n--------------------------------------\n'
 
 
 #Cookie处理： HTTPCookieProcessor
-cookie = cookielib.CookieJar()   #在内存中加载cookie
-#cookie = cookielib.LWPCookieJar() #在硬盘中存储cookie
-cookiehand = urllib2.HTTPCookieProcessor(cookie)
-opener = urllib2.build_opener(cookiehand)
+cookie = cookielib.CookieJar()   #在内存加载   声明一个CookieJar对象实例来保存cookie
+#cookie = cookielib.LWPCookieJar() #在硬盘加载
+'''
+filename = 'cookie.txt'  #设置保存cookie的文件，同级目录下的cookie.txt
+cookie = cookielib.MozillaCookieJar(filename)  #声明一个MozillaCookieJar对象实例来保存cookie，之后写入文件
+'''
+cookiehand = urllib2.HTTPCookieProcessor(cookie)  #利用urllib2库的HTTPCookieProcessor对象来创建cookie处理器
+opener = urllib2.build_opener(cookiehand)  #构建opener
 u = opener.open('http://www.example.com/evilplan.html')
 print u.read()
+for item in cookie:   #获取到的Cookie
+    print 'Name = '+item.name
+    print 'Value = '+item.value
+'''
+cookie.save(ignore_discard=True, ignore_expires=True)   #保存cookie到文件
+save参数说明：
+ignore_discard: save even cookies set to be discarded
+ignore_expires: save even cookies that have expiredThe file is overwritten if it already exists
+'''
+
+print '\n--------------------------------------\n'
+#文件中获取 Cookie 并访问
+
+#创建MozillaCookieJar实例对象
+cookie = cookielib.MozillaCookieJar()
+#从文件中读取cookie内容到变量
+cookie.load('cookie.txt', ignore_discard=True, ignore_expires=True)
+#创建请求的request
+req = urllib2.Request("http://www.baidu.com")
+#利用urllib2的build_opener方法创建一个opener
+opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))
+response = opener.open(req)
+print response.read()
+
 print '\n--------------------------------------\n'
 
 

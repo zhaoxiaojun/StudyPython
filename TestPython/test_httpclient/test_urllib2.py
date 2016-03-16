@@ -2,10 +2,10 @@
 import urllib2
 '''
 urllib2可以接受一个Request对象，并以此可以来设置一个URL的headers，但是urllib只接收一个URL。这意味着，你不能伪装你的用户代理字符串等
-urllib模块可以提供进行urlencode的方法，该方法用于GET查询字符串的生成，urllib2的不具有这样的功能。这就是urllib与urllib2经常在一起使用的原因
+urllib模块可以提供进行urlencode的方法，该方法用于GET查询字符串的生成，urllib2不具有这样的功能。这就是urllib与urllib2经常在一起使用的原因
 '''
 
-#原型：urllib2.urlopen(url[, data][, timeout])
+#原型：urllib2.urlopen(url[, data][, timeout])  data默认为空None，timeout默认为socket._GLOBAL_DEFAULT_TIMEOUT
 response = urllib2.urlopen('http://www.51testing.com/html/index.html')
 '''
 发送GET请求:
@@ -52,7 +52,7 @@ url = 'http://www.51testing.com/html/index.html'
 values = {'name' : 'Michael Foord', 'location' : 'Northampton', 'language' : 'Python' }
 data = urllib.urlencode(values)  #urlencode不能直接处理unicode对象，所以如果是unicode需要由unicode转到utf8
 print data
-req = urllib2.Request(url, data)  #如果没有data需要发送可以为None   当请求含有data参数时HTTP的请求为POST
+req = urllib2.Request(url, data)  #如果没有data需要发送可以为None   当请求含有data参数时HTTP的请求为POST   GET: req = urllib2.Request(url+data)
 #response = urllib2.urlopen(req)
 '''
 发送POST请求:

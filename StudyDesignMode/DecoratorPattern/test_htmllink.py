@@ -12,7 +12,7 @@ class HtmlLinks():
 
 class LogoutLink(HtmlLinks):
     def __init__(self):
-        self.html = "<a href="logout.html"> Logout </a>"
+        self.html = "<a href=\"logout.html\"> Logout </a>"
 
 class LogoutLinkH2Decorator(HtmlLinks):
     def __init__(self, logout_link):

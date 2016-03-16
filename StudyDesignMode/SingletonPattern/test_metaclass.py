@@ -1,6 +1,8 @@
 #coding=utf8
-#通过__metaclass__（元类）的的方式：
-
+"""
+方法3：本质上是方法1的升级（或者说高级）版
+使用__metaclass__（元类）的高级python用法
+"""
 
 class Singleton2(type):
     def __init__(cls, name, bases, dict):
@@ -21,7 +23,7 @@ two = MyClass3()
 two.a = 3
 print one.a
 
-print id(one)
+print id(one)  # The same !!
 print id(two)
 
 print one == two
