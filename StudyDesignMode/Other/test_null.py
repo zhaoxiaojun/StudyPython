@@ -1,83 +1,64 @@
 #coding=utf8
-class Null:
-    """A class for implementing Null objects.
-    This class ignores all parameters passed when constructing or
-    calling instances and traps all attribute and method requests.
-    Instances of it always (and reliably) do 'nothing'.
-    The code might benefit from implementing some further special
-    Python methods depending on the context in which its instances
-    are used. Especially when comparing and coercing Null objects
-    the respective methods' implementation will depend very much
-    on the environment and, hence, these special methods are not
-    provided here.
-    """
+class A(object):
+    pass
 
-    # Object constructing
-    def __init__(self, *args, **kwargs):
-        "Ignore parameters."
+class B(object):
+    b = 1
+    @classmethod
+    def test(cls):
+        print cls.b
+
+def get_test(x):
+    try:
+        return x.test
+    except AttributeError:
         return None
 
-    # Object calling
+# 我这里只写了2个类，但是其实有很多类
+for i in [A, B]:
+    test = get_test(i)
+    # 我要判断以下是否获得了这个类方法才能决定是否可以执行
+    if test:
+        test()
+
+print '\n----------------------------------------------\n'
+
+
+class Null(object):
+
+    def __init__(self, *args, **kwargs):
+        "忽略参数"
+        return None
+
     def __call__(self, *args, **kwargs):
-        "Ignore method calls."
+        "忽略实例调用"
         return self
 
-    # Attribute handling
     def __getattr__(self, mname):
-        "Ignore attribute requests."
+        "忽略属性获得"
         return self
 
     def __setattr__(self, name, value):
-        "Ignore attribute setting."
+        "忽略设置属性操作"
         return self
 
     def __delattr__(self, name):
-        "Ignore deleting attributes."
+        '''忽略删除属性操作'''
         return self
 
-    # Misc.
     def __repr__(self):
-        "Return a string representation."
         return "<Null>"
 
     def __str__(self):
-        "Convert to a string and return it."
         return "Null"
 
+def get_test_with_null(x):
+    try:
+        return x.test
+    # 异常处理返回Null类
+    except AttributeError:
+        return Null()
 
-def test():
-    "Perform some decent tests, or rather: demos."
-
-    # Constructing and calling
-    n = Null()
-    n = Null('value')
-    n = Null('value', param='value')
-
-    n()
-    n('value')
-    n('value', param='value')
-
-    # Attribute handling
-    n.attr1
-    n.attr1.attr2
-    n.method1()
-    n.method1().method2()
-    n.method('value')
-    n.method(param='value')
-    n.method('value', param='value')
-    n.attr1.method1()
-    n.method1().attr1
-
-    n.attr1 = 'value'
-    n.attr1.attr2 = 'value'
-
-    del n.attr1
-    del n.attr1.attr2.attr3
-
-    # Representation and conversion to a string
-    assert repr(n) == '<Null>'
-    assert str(n) == 'Null'
-
-
-if __name__ == '__main__':
-    test()
+for i in [A, B]:
+    # 直接调用了，不需要判断
+    get_test_with_null(i)()

@@ -1,3 +1,4 @@
+#coding=utf8
 #! /usr/local/bin/python3
 
 import cgi

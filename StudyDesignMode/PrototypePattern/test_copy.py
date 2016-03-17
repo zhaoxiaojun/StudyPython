@@ -15,7 +15,7 @@ def Prototype(name, bases, dict):
     return inst
 
 
-class copyier:
+class copyier(object):
     def __init__(self, inst):
         self._inst = inst
 
@@ -28,7 +28,7 @@ class copyier:
         return newinst
 
 
-class Point:
+class Point(object):
     __metaclass__ = Prototype
     x = 0
     y = 0

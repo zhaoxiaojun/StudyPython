@@ -1,8 +1,7 @@
 #coding=utf8
 
-# -*- coding: utf-8 -*-
 
-class IMath:
+class IMath(object):
     """Interface for proxy and real subject."""
     def add(self, x, y):
         raise NotImplementedError()
@@ -46,7 +45,7 @@ class Proxy(IMath):
 
     def div(self, x, y):
         if y == 0:
-            return float('inf') # Вернуть positive infinity
+            return float('inf') #positive infinity
         return self.math.div(x, y)
 
 p = Proxy()

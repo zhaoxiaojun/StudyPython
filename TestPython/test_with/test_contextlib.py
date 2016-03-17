@@ -8,8 +8,8 @@ def make_context() :
         yield {}
     except RuntimeError, err :
         print 'error' , err
-    finally :
-        print 'exit'
+    #finally :
+    print 'exit'
 
 with make_context() as value :
     print value

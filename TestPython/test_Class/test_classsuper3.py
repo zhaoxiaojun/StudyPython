@@ -18,16 +18,20 @@ class C(A):
         super(C, self).__init__()
         print "leave C"
 
-class D(B, C):
-    pass
+# class D(B, C):
+#     pass
 
-'''
+
 class D(B, C):
     def __init__(self):
-        pass
-'''
+        print "enter D"
+        super(D, self).__init__()
+        print "leave D"
+
 
 
 print D.__mro__
+print B.__mro__
+print C.__mro__
 
 d = D()
