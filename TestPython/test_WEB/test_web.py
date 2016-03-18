@@ -1,5 +1,7 @@
 #coding=utf8
 import web
+#web.py：一个小巧的Web框架
+
 
 urls = ('/', 'index')
 
@@ -13,3 +15,4 @@ class index:
 
 if __name__ == "__main__":
     app.run()
+

@@ -1,0 +1,21 @@
+#coding=utf8
+"""
+Gevent为HTTP内容服务提供了两种WSGI server
+wsgi和pywsgi：
+gevent.wsgi.WSGIServer
+gevent.pywsgi.WSGIServer
+"""
+from gevent.wsgi import WSGIServer
+
+def application(environ, start_response):
+    status = '200 OK'
+    body = '<p>Hello World</p>'
+
+    headers = [
+        ('Content-Type', 'text/html')
+    ]
+
+    start_response(status, headers)
+    return [body]
+
+WSGIServer(('', 8000), application).serve_forever()

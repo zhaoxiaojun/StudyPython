@@ -34,3 +34,36 @@ if __name__=='__main__':
 执行，当其中一个执行完事后才空出一个进程处理对象3。 因为为非阻塞，主函数会自己执行自个的，不搭理进程的执行，所以运行完for循环后直接输出。主程序在pool.join()
 处等待各个进程的结束
 """
+
+
+"""
+map(func, iterable[, chunksize])
+map方法与在功能上等价与内置的map()，只不过单个任务会并行运行。它会使进程阻塞直到结果返回。但需注意的是其第二个参数虽然描述的为iterable, 但在实际使用中
+发现只有在整个队列全部就绪后，程序才会运行子进程
+
+
+map_async(func, iterable[, chunksize[, callback]])
+与map用法一致，但是它是非阻塞的。其有关事项见apply_async
+
+
+imap(func, iterable[, chunksize])
+与map不同的是， imap的返回结果为iter，需要在主进程中主动使用next来驱动子进程的调用。即使子进程没有返回结果，主进程对于gen_list(l)的iter还是会继续进行
+， 另外根据python2.6文档的描述，对于大数据量的iterable而言，将chunksize设置大一些比默认的1要好
+for x in pool.imap(pool_test, gen_list(l)):
+    pass
+
+
+imap_unordered(func, iterable[, chunksize])
+同imap一致，只不过其并不保证返回结果与迭代传入的顺序一致
+
+close()
+关闭pool，使其不再接受新的任务
+
+
+terminate()
+结束工作进程，不再处理未处理的任务
+
+
+join()
+主进程阻塞等待子进程的退出， join方法要在close或terminate之后使用
+"""

@@ -1,7 +1,7 @@
 #coding=utf8
-import sys
-sys.path.append("m2")
-import sdf3
+# import sys
+# sys.path.append("m2")
+from m2 import *
 
 def test_sdf2():
 	print "test_sdf2!!!"

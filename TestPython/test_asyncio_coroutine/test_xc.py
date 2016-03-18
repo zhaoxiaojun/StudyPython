@@ -1,5 +1,4 @@
 #coding=utf8
-#先理解生成器generator(test_generator)
 
 
 # 基于生成器的协程coroutine

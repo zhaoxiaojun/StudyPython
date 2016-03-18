@@ -26,10 +26,6 @@ def signin():
 if __name__ == '__main__':
     app.run()    # Flask自带的Server在本地端口5000上监听
 
-'''
-常见的Python Web框架还有：
-Django：全能型Web框架；
-web.py：一个小巧的Web框架；
-Bottle：和Flask类似的Web框架；
-Tornado：Facebook的开源异步Web框架。
-'''
+
+
+

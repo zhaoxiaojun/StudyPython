@@ -1,6 +1,5 @@
 #coding=utf8
 
-
 class Foo(object):
     def bar(self):
         print 'Foo.bar'
