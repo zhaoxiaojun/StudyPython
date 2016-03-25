@@ -2,6 +2,6 @@
 from test import nameO, stt
 
 print '---'
-print nameO.ppp('sdafasdf')
+nameO.ppp('sdafasdf')
 print stt
 print '---'

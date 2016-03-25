@@ -7,8 +7,7 @@ urls = [
     'http://www.163.com',
     'http://www.amazon.com',
     'http://www.ebay.com',
-    'http://www.alibaba.com',
-    'http://www.reddit.com'
+    'http://www.alibaba.com'
 ]
 
 def myRequest(url):
@@ -20,7 +19,7 @@ def timeCost(request, n):
   print "Elapsed time: %s" % (time.time()-start)
 
 start = time.time()
-pool = threadpool.ThreadPool(5)    #ThreadPool(poolsize)  表示最多可以创建poolsize这么多线程
+pool = threadpool.ThreadPool(4)    #ThreadPool(poolsize)  表示最多可以创建poolsize这么多线程
 reqs = threadpool.makeRequests(myRequest, urls, timeCost)   #makeRequests(some_callable, list_of_args, callback)
 [ pool.putRequest(req) for req in reqs ]
 pool.wait()

@@ -36,7 +36,8 @@ class WorkManager(object):
         等待所有线程运行完毕
         """
         for item in self.threads:
-            if item.isAlive(): item.join()
+            if item.isAlive():
+                item.join()
 
 class Work(threading.Thread):
     def __init__(self, work_queue):
@@ -61,7 +62,7 @@ def do_job(args):
 
 if __name__ == '__main__':
     start = time.time()
-    work_manager =  WorkManager(10000, 10)  #或者work_manager =  WorkManager(10000, 20)
+    work_manager =  WorkManager(100, 50)  #任务数、 线程数
     work_manager.wait_allcomplete()
     end = time.time()
     print "cost all time: %s" % (end-start)
