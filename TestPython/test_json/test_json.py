@@ -3,12 +3,13 @@ import json
 
 '''
 JSON 值可以是：
-- 数字（整数或浮点数）
-- 字符串（在双引号中）
-- 逻辑值（true 或 false）
-- 数组（在方括号中）
-- 对象（在花括号中）
+- 数字number（整数或浮点数）
+- 字符串string（在双引号中）
+- 逻辑值boolean（true 或 false）
+- 数组array（在方括号中）
+- 对象object（在花括号中）
 - null
+
 
 json.dumps()方法返回了一个str对象encodedjson
 json.loads()方法返回了原始的对象，但是仍然发生了一些数据类型的转化。比如，‘abc’转化为了unicode类型
