@@ -12,10 +12,10 @@
 
 class Singleton(object):
     def __new__(cls, *a, **k):
-        if not hasattr(cls, '_inst'):
-            #cls._inst = super(Singleton, cls).__new__(cls, *a, **k)
-            cls._inst = object.__new__(cls, *a, **k)
-        return cls._inst
+        if not hasattr(cls, '_ascinst'):
+            cls._ascinst = super(Singleton, cls).__new__(cls, *a, **k)
+            #cls._ascinst = object.__new__(cls, *a, **k)
+        return cls._ascinst
 
     def ppp(self,s):
         return s
