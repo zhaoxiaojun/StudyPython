@@ -1,8 +1,9 @@
 #coding=utf8
 '''
-操作XML有两种方法：DOM和SAX。
+操作XML的常用模块：DOM、SAX、ElementTree
 DOM会把整个XML读入内存，解析为树，因此占用内存大，解析慢，优点是可以任意遍历树的节点。
 SAX是流模式，边读边解析，占用内存小，解析快，缺点是我们需要自己处理事件。
+ElementTree元素树 就像一个轻量级的DOM，具有方便友好的API。代码可用性好，速度快，消耗内存少。 应对恶意结构数据时并不安全
 '''
 from xml.parsers.expat import ParserCreate
 
