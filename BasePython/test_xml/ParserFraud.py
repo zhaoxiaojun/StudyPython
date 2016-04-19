@@ -29,17 +29,43 @@ root = tree.getroot()
 # tree.parse("TestFraud.xml")
 # root = tree.getroot()
 
-print root.tag
-print root.attrib
+#print root.tag
+#print root.attrib
 
 # for child in root:
 #     print child.tag, child.attrib
 
-print root[0].tag
-print root[0].attrib
+#print root[0].tag
+#print root[0].attrib
+
+
+setting = root.find('setting')
+print setting.findtext('browser')
+print setting.findtext('app_url')
 
 childrenlist = root.getchildren()
-print childrenlist[1].get("name")  #获取属性值
+tname = childrenlist[1].get("name")
+print tname  #获取属性值
+print type(tname)
+
+fp = file('autotest.py', 'wb')
+fp.writelines("""'''""")
+fp.writelines(tname.encode('gbk'))
+fp.writelines("""'''""")
+
+wwwname = """u'''""" + tname.encode('gbk') + """'''
+"""
+fp.writelines(wwwname)
+
+wwwname2 = """u'''%(tn)s'''
+""" % dict(tn = tname.encode('gbk'))
+fp.writelines(wwwname2)
+
+fp.flush()
+fp.close()
+
+print '=============================='
+
 
 classes = childrenlist[1].findall(".")  #XPath
 print classes

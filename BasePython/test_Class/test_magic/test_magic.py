@@ -15,8 +15,8 @@ C.__len__(self) “ ” 长度（可用于类）；内建len()
 """
 
 class A(object):
-    def __new__(self):
-        print "call __new__"
+    # def __new__(self):
+    #     print "call __new__"
 
     def __init__(self):
         print "call __init__"
@@ -49,8 +49,8 @@ class A(object):
         print "call __call__"
 
 
-a = A()
-print a
+o = A()
+#print o.a
 #repr(a)
 #unicode(a)
 #print bool(a)
