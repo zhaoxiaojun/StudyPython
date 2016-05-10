@@ -13,10 +13,10 @@ class Request:
         self.num = tnum
 
 class Manager:
-    def __init__(self,temp):
-        self.name = temp
-    def SetSuccessor(self,temp):
-        self.manager = temp
+    def __init__(self,name):
+        self.name = name
+    def SetSuccessor(self,manager):
+        self.manager = manager
     def GetRequest(self,req):
         pass
 

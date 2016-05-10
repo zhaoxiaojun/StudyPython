@@ -23,6 +23,6 @@ class MyThread(threading.Thread):
 
 if __name__ == "__main__":
     t1=MyThread(999)
-    t1.setDaemon(False)   #setDaemon的默认值是False
+    #t1.setDaemon(True)   #setDaemon的默认值是False
     t1.start()
     print "I am the father thread."

@@ -18,7 +18,7 @@ if __name__ == "__main__":
     #idd = False
     tdname = 'ttt'
     t1=MyThread(tdname)
-    t1.setDaemon(True)   #setDaemon的默认值是False
+    #t1.setDaemon(True)   #setDaemon的默认值是False
 
     t2=MyThread(tdname)
     t2.setDaemon(True)
