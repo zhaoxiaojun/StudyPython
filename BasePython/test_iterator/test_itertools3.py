@@ -45,6 +45,6 @@ for item in itertools.izip(listone,listtwo):    #返回迭代器，项目是元�
 print '\n---------------------------\n'
 
 a = "hello"
-c, d = itertools.tee(iter(a), 2)  #tee(it[, n = 2]) 把一个迭代器分为n个迭代器, 返回一个元组.默认是两个
+c, d = itertools.tee(iter(a), 2)  #tee(it[, n = 2]) 把一个迭代器分为n个迭代器, 返回一个元组, 默认是两个
 for i, j in zip(c, d):
     print i, j

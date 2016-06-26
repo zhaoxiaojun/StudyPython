@@ -163,7 +163,10 @@ subn(repl, string[, count]) |re.sub(pattern, repl, string[, count]):
 p = re.compile(r'(\w+) (\w+)')
 s = 'i say, hello world!'
 
-print p.sub(r'\2 \1', s)
+print p.sub(r'\1', s)
+print p.sub(r'\2', s)
+print p.sub(r'\1 -- \2', s)
+
 print p.subn(r'\2 \1', s)
 
 print '\n------------------------\n'
