@@ -2,7 +2,7 @@
 import re
 
 param = '207155115151'
-pattern = re.compile(r'^(208|209)\w+')  #匹配userid
+pattern = re.compile(r'^(207|209)\w+')  #匹配userid
 match = pattern.match(param)
 
 print match

@@ -9,15 +9,14 @@ class test1(object):
         print self.value1
 
 class test2(test1):
-    pass
-    def __init__(self, v):
-        super(test2, self).__init__(v)
-        self.value2 = v + '---'
-        self.p1()
-
+    # pass
+    # def __init__(self, v):
+    #     super(test2, self).__init__(v)
+    #     self.value2 = v + '---'
+    #     self.p1()
     def ppp(self, p):
         print self.value1 + "+++" + p
-        print self.value2 + "+++" + p
+        #print self.value2 + "+++" + p
 
     def p1(self):
         print 'p1'
