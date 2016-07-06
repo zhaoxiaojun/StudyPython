@@ -13,3 +13,5 @@ updated examples will be posted here.
 
 -- John Goerzen
    July 19, 2004
+
+《Python网络编程基础》源代码

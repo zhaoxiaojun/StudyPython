@@ -11,6 +11,7 @@ def f1():
     f2()
 
 def f2():
+    print inspect.stack()
     print 'caller name:', type(inspect.stack()[1][1])
     print 'caller name:', type(inspect.stack()[1][2])
 

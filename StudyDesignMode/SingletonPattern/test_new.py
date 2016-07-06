@@ -11,11 +11,12 @@
 """
 
 class Singleton(object):
-    def __new__(cls, *a, **k):
-        if not hasattr(cls, '_ascinst'):
-            cls._ascinst = super(Singleton, cls).__new__(cls, *a, **k)
-            #cls._ascinst = object.__new__(cls, *a, **k)
-        return cls._ascinst
+    print 'test11111111111'
+    def __new__(abc, *a, **k):
+        if not hasattr(abc, '_ascinst'):
+            abc._ascinst = super(Singleton, abc).__new__(abc, *a, **k)
+            #abc._ascinst = object.__new__(abc, *a, **k)
+        return abc._ascinst
 
     def ppp(self,s):
         return s
