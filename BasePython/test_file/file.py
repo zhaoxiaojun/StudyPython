@@ -15,3 +15,4 @@ fp.writelines(methodDefined % {'methodname': 'nananana'})
 
 fp.flush()
 fp.close()
+print 'sdsdsds'
