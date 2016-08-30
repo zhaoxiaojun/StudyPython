@@ -1,0 +1,6 @@
+<form action="/purchase" method="POST">
+    {% raw xsrf_form_html() %}
+    <input type="text" name="title" />
+    <input type="text" name="quantity" />
+    <input type="submit" value="Check Out" />
+</form>

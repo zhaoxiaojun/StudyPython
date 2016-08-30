@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="{{ static_url("style.css") }}">
+
+这个对static_url的调用生成了URL的值，并渲染输出类似下面的代码：
+
+<link rel="stylesheet" href="/static/style.css?v=ab12">
+
+为什么使用static_url而不是在你的模板中硬编码?
+其一，static_url函数创建了一个基于文件内容的hash值，并将其添加到URL末尾（查询字符串的参数v）。这个hash值确保浏览器总是加载一个文件的最新版而不是之前的缓存版本。无论是在你应用的开发阶段，还是在部署到生产环境使用时，都非常有用，因为你的用户不必再为了看到你的静态内容而清除浏览器缓存了
+
+另一个好处是你可以改变你应用URL的结构，而不需要改变模板中的代码，比如说，你想把静态资源从我们刚才使用的/static目录移到新的/s目录。你可以简单地改变静态路径
+由static变为s，然后每个使用static_url包裹的引用都会被自动更新

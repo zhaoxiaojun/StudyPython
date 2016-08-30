@@ -19,6 +19,7 @@ class PoemPageHandler(tornado.web.RequestHandler):
         noun2 = self.get_argument('noun2')
         verb = self.get_argument('verb')
         noun3 = self.get_argument('noun3')
+        #RequestHandler类的render方法来告诉Tornado读入模板文件，插入其中的模版代码，并返回结果给浏览器
         self.render('poem.html', roads=noun1, wood=noun2, made=verb,
                 difference=noun3)
 
@@ -26,7 +27,7 @@ if __name__ == '__main__':
     tornado.options.parse_command_line()
     app = tornado.web.Application(
         handlers=[(r'/', IndexHandler), (r'/poem', PoemPageHandler)],
-        template_path=os.path.join(os.path.dirname(__file__), "templates")
+        template_path=os.path.join(os.path.dirname(__file__), "templates") #template_path参数告诉Tornado在哪里寻找模板文件
     )
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)
