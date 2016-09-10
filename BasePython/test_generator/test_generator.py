@@ -12,5 +12,11 @@ print o
 print o.next()
 print o.next()
 print o.next()
-print o.send(None)
-print o.send(1)
+# print o.send(None)
+# print o.send(1)
+print o.next()
+print o.next()
+print o.next()
+
+o = (x+1 for x in lst)
+print o.next()

@@ -2,7 +2,7 @@
 
 #命名元组
 from collections import namedtuple
-Point = namedtuple('Point', ['x', 'y'])   #命令元组类
+Point = namedtuple('Point', ['x', 'y'])   #命名元组 类
 p = Point(1, 2)    #实例化类得到对象p
 print p.x
 print p.y

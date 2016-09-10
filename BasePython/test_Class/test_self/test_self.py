@@ -29,7 +29,7 @@ print cat.name # 访问实例属性
 cat.sayHi() # 调用实例方法
 
 print dir(cat) # 获取实例的属性名，以列表形式返回 遇到未知的对象使用dir()是一个很好的主意
-if hasattr(cat, 'name'): # 检查实例是否有这个属性
+if not hasattr(cat, 'name'): # 检查实例是否有这个属性
     setattr(cat, 'name', 'tiger') # same as: a.name = 'tiger'
 print getattr(cat, 'name') # same as: print a.name
 

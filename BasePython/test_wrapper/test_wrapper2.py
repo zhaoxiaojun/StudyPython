@@ -3,7 +3,7 @@
 理解装饰器
 '''
 
-# 装饰器是一个以另一个函数为参数的函数
+# 装饰器是一个以另一个函数或类为参数的函数
 def my_shiny_new_decorator(a_function_to_decorate):
 
     # 在这里，装饰器定义一个函数： 包装器.
