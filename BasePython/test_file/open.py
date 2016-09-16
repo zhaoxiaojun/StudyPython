@@ -35,23 +35,23 @@ fp.truncate([size])  #把文件裁成规定的大小，默认的是裁到当前�
 
 """
 #更好的方式
-def genertorfile():
-    with open('testm/test4.txt', 'w') as fp:
-        pass
+# def genertorfile():
+#     with open('testm/test4.txt', 'w') as fp:
+#         pass
 
 def writefile(data):
     with open('testm/test4.txt', 'a+') as fp:
-        fp.writelines(data)
+        fp.write(data)
         fp.flush()
 
-def readfile():
-    with open('testm/test4.txt', 'r') as fp:
-        print fp.readline()
+# def readfile():
+#     with open('testm/test4.txt', 'r') as fp:
+#         print fp.readline()
 
 
-genertorfile()
+#genertorfile()
 writefile('testdssds1234dfsdf123')
 writefile('testdssds1234dfsdf123')
 writefile('testdssds1234dfsdf123')
 writefile('testdssds1234dfsdf123')
-readfile()
+#readfile()
