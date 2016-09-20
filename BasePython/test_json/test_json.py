@@ -2,7 +2,7 @@
 import json
 
 '''
-JSON 值可以是：
+JSON值可以是：
 - 数字number（整数或浮点数）
 - 字符串string（在双引号中）
 - 逻辑值boolean（true 或 false）
@@ -12,7 +12,7 @@ JSON 值可以是：
 
 
 json.dumps()方法返回了一个str对象encodedjson
-json.loads()方法返回了原始的对象，但是仍然发生了一些数据类型的转化。比如，‘abc’转化为了unicode类型
+json.loads()方法返回了原始的对象，但是仍然发生了一些数据类型的转化。比如，‘abc转化为了unicode类型
 '''
 
 data = '''{
