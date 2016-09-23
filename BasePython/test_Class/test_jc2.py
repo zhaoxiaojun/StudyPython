@@ -15,6 +15,7 @@ class test2(test1):
     #     self.value2 = v + '---'
     #     self.p1()
     def ppp(self, p):
+        super(test2, self).ppp()
         print self.value1 + "+++" + p
         #print self.value2 + "+++" + p
 

@@ -1,13 +1,14 @@
 #coding=utf8
+#时间转换
 import time
 import datetime
-
 
 
 a = "2013-10-01"
 timeArray = time.strptime(a, "%Y-%m-%d")
 timeStamp = int(time.mktime(timeArray))
 print timeStamp
+
 
 timeStamp = 0
 timeArray = time.localtime(timeStamp)

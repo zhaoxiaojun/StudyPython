@@ -1,4 +1,5 @@
 #coding=utf8
+#timeit
 from timeit import timeit as timeit
 
 '''
@@ -13,6 +14,5 @@ print(timeit("sqrt(2.0)", "from math import sqrt"))
 
 def test():
     print 'tests'
-
 
 print(timeit("test()", "from __main__ import test", number=1000))
