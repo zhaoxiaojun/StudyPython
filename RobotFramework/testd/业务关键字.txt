@@ -1,0 +1,5 @@
+*** Keywords ***
+xh
+    [Arguments]    ${num}
+    :FOR    ${i}    in range    ${num}
+    \    log    ${i}

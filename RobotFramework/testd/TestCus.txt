@@ -1,0 +1,6 @@
+*** Settings ***
+Library           CustomLibrary
+
+*** Test Cases ***
+test1
+    runtest

@@ -1,0 +1,9 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Test Cases ***
+baidu_search
+    open browser    http://www.baidu.com
+    input text    id=kw    robot framework
+    click button    id=su
+    close browser

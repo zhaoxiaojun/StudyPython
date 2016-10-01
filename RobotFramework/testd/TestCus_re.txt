@@ -1,0 +1,9 @@
+*** Settings ***
+Library           Remote    127.0.0.1:8270
+
+*** Test Cases ***
+test1
+    ${a}    evaluate    int(13)
+    ${b}    evaluate    int(5)
+    ${sub}    sub    ${a}    ${b}
+    log    ${sub}

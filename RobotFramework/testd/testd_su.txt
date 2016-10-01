@@ -1,0 +1,70 @@
+*** Settings ***
+Library           Screenshot
+Library           Collections
+Library           Selenium2Library
+Resource          业务关键字.txt
+
+*** Variables ***
+${hi}             欢迎第一次使用robot framework
+@{list1}          1    2    s    4    w    a    b
+...               c    d    e    df    sd    fgh    jjk
+...               # list demo
+
+*** Test Cases ***
+testcase1
+    ${a}    catenate    QQQQQQQ    wwww    ssssssss    dddddd
+    log    ${a}
+    ${a}    create List    dddd    ggggg    hhhh
+    log many    ${a}
+    ${t}    get time    ssss
+    sleep    0.1
+    log    ${t}
+    ${b}    set variable    59
+    run keyword if    ${b}>=90    log    优秀
+    ...    ELSE IF    ${b}>=60    log    及格
+    ...    ELSE    log    不及格
+    : FOR    ${i}    IN RANGE    10
+    \    log    ${i}
+    ${d}    evaluate    random.randint(1000, 9999)    random
+    log    ${d}
+
+testcase2
+    import library    /Users/tataufo/Temp/testrb.py    #调用python
+    ${a}    evaluate    int(4)
+    ${b}    evaluate    int(5)
+    ${he}    add    ${a}    ${b}
+    log    ${he}
+
+testcase3
+    take screenshot
+
+testcase4
+    ${dict1}    create dictionary    key1    value1    key2    value2
+    log    ${dict1}
+    ${dict1}    create dictionary    a=123    b=222
+    log    ${dict1}
+    ${items}    get dictionary items    ${dict1}
+    log    ${items}
+    ${key}    get dictionary keys    ${dict1}
+    log    ${key}
+    ${value}    get dictionary values    ${dict1}
+    log    ${value}
+    ${v}    get from dictionary    ${dict1}    a    #获取字典中key对应的value
+    log    ${v}
+
+testcase5
+    [Tags]    重要    # \ \ 的
+    log    ${hi}
+    :FOR    ${n}    in    @{list1}
+    \    log    ${n}
+    ${EMPTY}
+
+testcase6
+    循环    20    #使用用户关键字
+    xh    5    #使用资源文件中的公共业务关键字
+
+*** Keywords ***
+循环
+    [Arguments]    ${num}
+    :FOR    ${i}    in range    ${num}
+    \    log    ${i}
