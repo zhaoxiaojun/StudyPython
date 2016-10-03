@@ -1,0 +1,49 @@
+#coding=utf8
+
+
+"""Qingchat CLI
+
+Usage:
+  qingchat config ip <ip>
+  qingchat config port <port>
+  qingchat config login
+  qingchat group list
+  qingchat group choose <group_name>...
+  qingchat group clean
+  qingchat group send -t <content>
+  qingchat group send -i <media>
+  qingchat group send -f <file> [<delaytime>]
+
+Options:
+  -h --help     Show this screen.
+  -v --version     Show version.
+"""
+
+from docopt import docopt
+
+arguments = docopt(__doc__, version='Qingchat 0.3.2')
+
+
+'''
+就会在你的程序中导入一个arguments字典，这个字典中的内容形如：
+{
+    '-f': False,
+    '-i': False,
+    '-t': False,
+    '<content>': None,
+    '<file>': None,
+    '<group_name>': [],
+    '<ip>': '127.0.0.1',
+    '<media>': None,
+    '<port>': None,
+    'choose': False,
+    'clean': False,
+    'config': True,
+    'group': False,
+    'ip': True,
+    'list': False,
+    'login': False,
+    'port': False,
+    'send': False
+}
+'''
