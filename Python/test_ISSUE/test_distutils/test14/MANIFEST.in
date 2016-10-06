@@ -1,0 +1,7 @@
+include *.txt
+recursive-include examples *.txt *.py
+prune examples/sample?/build
+
+
+#意思是：包含所有的.txt文件；包含examples目录下的所有.txt或者.py文件；排除所有匹配examples/sample?/build的目录。
+#所有这些过程，都是在标准规则执行之后执行的，所以可以在模板文件中排除标准集合中的文件

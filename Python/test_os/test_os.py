@@ -79,7 +79,7 @@ print os.stat('test2.txt')  #获取文件属性
 
 #os.exit()  #终止当前进程
 
-print os.path.getsize('test2.txt')  #获取文件大小
+print os.path.getsize('test2.txt')  #获取文件大小 如果文件不存在就返回错误
 
 print '============================================================'
 

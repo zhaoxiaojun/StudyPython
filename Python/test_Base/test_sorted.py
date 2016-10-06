@@ -5,6 +5,14 @@ print sorted([36, 5, 12, 9, 21])
 
 print sorted(['bob', 'about', 'Zoo', 'Credit'])   #默认情况下，对字符串排序，是按照ASCII的大小比较的
 
+
+zdk = [('BPS', 1), ('UPS', 4), ('APS', 2), ('CPS', 5)]
+
+print sorted(zdk)  #默认按第一个域升序排序
+print sorted(zdk,key=lambda x:x[1], reverse=True)  #按第二个域降序排序
+
+
+
 #自定义的排序
 def reversed_cmp(x, y):
     if x > y:
