@@ -1,0 +1,57 @@
+*** Test Cases ***
+test_string
+    ${ascii_letters}    Evaluate    string.ascii_letters    string
+    log    ${ascii_letters}
+    ${ascii_lowercase}    Evaluate    string.ascii_lowercase    string
+    log    ${ascii_lowercase}
+    ${ascii_uppercase}    Evaluate    string.ascii_uppercase    string
+    log    ${ascii_uppercase}
+    ${digits}    Evaluate    string.digits    string
+    log    ${digits}
+    ${hexdigits}    Evaluate    string.hexdigits    string
+    log    ${hexdigits}
+    ${octdigits}    Evaluate    string.octdigits    string
+    log    ${octdigits}
+    ${letters}    Evaluate    string.letters    string
+    log    ${letters}
+    ${lowercase}    Evaluate    string.lowercase    string
+    log    ${lowercase}
+    ${uppercase}    Evaluate    string.uppercase    string
+    log    ${uppercase}
+    ${printable}    Evaluate    string.printable    string
+    log    ${printable}
+    ${punctuation}    Evaluate    string.punctuation    string
+    log    ${punctuation}
+    ${whitespace}    Evaluate    string.whitespace    string
+    log    ${whitespace}
+
+test_randstr
+    ${str}    Evaluate    string.ascii_letters    string
+    ${len}    Evaluate    len('${str}')
+    ${num}    Set Variable    10
+    ${newstr}    Set Variable    ${EMPTY}
+    log    ${newstr}
+    :FOR    ${index}    IN RANGE    ${num}
+    \    ${i}    Evaluate    random.randint(0, int(${len}) - 1)    random
+    \    ${tmp}    Set Variable    ${str[int(${i})-1]}
+    \    ${newstr}    Set Variable    ${newstr}${tmp}
+    log    ${newstr}
+
+test_stroper
+    ${str}    Set Variable    asdfsdifsidfiosssssdddsdsdsdsddig
+    ${n}    Get Count    ${str}    s    #计算字符串中s的个数
+    log    ${n}
+    ${n}    Get Length    ${str}    #获取变量的长度
+    log    ${n}
+    ${varval}    Get Variables
+    log    ${varval}
+
+test_time
+    ${dt}    Get Time
+    ${dt1}    Get Time    year month day
+    ${dt2}    Get Time    year-month-day
+    ${dt3}    Get Time    year-month-day    NOW + 1day
+    log    ${dt}
+    log    ${dt1}
+    log    ${dt2}
+    log    ${dt3}

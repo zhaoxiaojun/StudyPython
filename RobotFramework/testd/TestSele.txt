@@ -1,9 +1,15 @@
 *** Settings ***
 Library           Selenium2Library
+Resource          业务关键字.txt
 
 *** Test Cases ***
 baidu_search
-    open browser    http://www.baidu.com
-    input text    id=kw    robot framework
-    click button    id=su
-    close browser
+    百度搜索    hahaha
+    百度搜索    java
+
+baidu_search2
+    百度搜索2    http://www.baidu.com    hahaha
+
+baidu_search3
+    百度搜索2    ${testurl}    ${searchtext}
+    #Arguments栏输入参数： \ -v testurl:http://www.baidu.com -v searchtext:hahaha

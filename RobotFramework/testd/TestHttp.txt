@@ -1,0 +1,25 @@
+*** Settings ***
+Library           RequestsLibrary
+
+*** Test Cases ***
+test_get
+    Create Session    tata_session    http://ft.tataufo.com
+    ${resp}    Get Request    tata_session    /v1/
+    log    ${resp.status_code}
+    log    ${resp.content}
+
+test_post
+    #构造请求头字典
+    ${dict}    Create Dictionary    cmdid=10004    timestamp=1477297285397
+    Log To Console    ${dict}
+    #构造请求体字典
+    ${common}    Create Dictionary    userid=8
+    ${data}    Create Dictionary    common=${common}
+    log    ${data}
+    #发请求
+    Create Session    tata_session    http://ft.tataufo.com:10000
+    ${resp}    Post Request    tata_session    /v1/    headers=${dict}    data=${data}
+    log    ${resp.status_code}
+    log    ${resp.content}
+    log    ${resp.headers}
+    #log    ${resp.json()}

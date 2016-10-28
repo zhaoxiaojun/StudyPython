@@ -8,5 +8,6 @@ class name(object):
 nameO = name()
 
 stt = 'ssssss'
+print stt
 
-from test import test1
+__all__ = ['test1', 'nameO']

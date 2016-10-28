@@ -1,5 +1,54 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          步骤关键字.txt
+
 *** Keywords ***
 xh
     [Arguments]    ${num}
-    :FOR    ${i}    in range    ${num}
+    : FOR    ${i}    IN RANGE    ${num}
     \    log    ${i}
+
+百度搜索
+    [Arguments]    ${keyname}
+    open browser    http://www.baidu.com
+    input text    id=kw    ${keyname}
+    click button    id=su
+    sleep    3
+    ${title}    get title
+    should contain    ${title}    ${keyname}
+    close all browsers
+
+百度搜索2
+    [Arguments]    ${url}    ${keyname}
+    打开浏览器    ${url}
+    输入搜索内容    ${keyname}
+    点击搜索
+    校验内容    ${keyname}
+    关闭浏览器
+
+varkey
+    [Arguments]    ${arg1}    ${arg2}    ${arg3}=333    ${arg4}=444
+    log    ${arg1}    #如果某一个参数设置成了选填参数，那么他后面的参数都必须是选填参数，不能是必填参数    变量名和等号间不能有空格
+    log    ${arg2}
+    log    ${arg3}
+    log    ${arg4}
+
+varkey2
+    [Arguments]    ${arg1}    @{arg2}
+    log    ${arg1}    #只能有1个List参数，并且必须放在最后
+    log    ${arg2}
+
+teardown
+    [Arguments]    ${arg1}    @{arg2}
+    ${temp}    Set Variable    ${arg1}
+    ${arg1}    Set Variable    ${arg2[2]}
+    log    ${arg1}---${arg2}
+    [Teardown]    set suite variable    ${arg1}    ${temp}    # 把temp的值覆盖arg1，并把arg1设为Suite级别的变量(恢复arg1的值)
+
+return
+    [Arguments]    ${arg1}    @{arg2}
+    ${temp}    Set Variable    ${arg1}
+    ${arg1}    Set Variable    ${arg2[2]}
+    log    ${arg1}---${arg2}
+    [Teardown]    set suite variable    ${arg1}    ${temp}
+    [Return]    ${arg1}    # 返回单个单值变量(也可以返回多个单值变量或list变量) \ \ Teardown之后才会Return

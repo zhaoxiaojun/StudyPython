@@ -1,5 +1,5 @@
 *** Settings ***
-Library           Remote    127.0.0.1:8270
+Library           Remote    192.168.99.184:8271
 
 *** Test Cases ***
 test1
@@ -7,3 +7,5 @@ test1
     ${b}    evaluate    int(5)
     ${sub}    sub    ${a}    ${b}
     log    ${sub}
+    ${add}    add    ${a}    ${b}
+    log    ${add}

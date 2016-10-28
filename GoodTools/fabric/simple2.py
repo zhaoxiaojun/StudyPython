@@ -8,7 +8,7 @@ env.user = 'root'
 env.hosts = ['121.40.226.14',]
 env.password = 'wjdgusdn0820ABC'
 
-@runs_once   #只有第一台触发次函数
+@runs_once   #只有第一台触发此函数
 def input_raw():
     return prompt('please input directory name: ', default='/home')
 

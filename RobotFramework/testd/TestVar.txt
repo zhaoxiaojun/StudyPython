@@ -1,0 +1,35 @@
+*** Settings ***
+Variables         /Users/tataUFO/Code/StudyPython/RobotFramework/var.py
+Resource          业务关键字.txt
+Library           OperatingSystem
+
+*** Test Cases ***
+testcase
+    import variables    /Users/tataUFO/Code/StudyPython/RobotFramework/var.py    #Arguments栏输入参数： \ -V /Users/tataUFO/Code/StudyPython/RobotFramework/var.py
+    log    ${testurl}
+    log    ${searchtext}
+    log    ${vars}
+    log    ${integer}
+
+testvarkey
+    varkey    111    222
+    varkey2    12    4    5    6
+
+testTeardown
+    teardown    111    222    333    444
+    log    ${arg1}
+
+testReturn
+    ${res}    return    111    222    333    444
+    log    ${res}
+
+test_环境变量
+    log    %{PATH}
+    ${p}    Get Environment Variable    PATH
+    log    ${p}
+
+testNull
+    ${dict}    Create Dictionary
+    log    ${dict}
+    ${userid}    Create Dictionary    userid=8
+    log    ${userid}

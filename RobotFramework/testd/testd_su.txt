@@ -11,12 +11,12 @@ ${hi}             欢迎第一次使用robot framework
 ...               # list demo
 
 *** Test Cases ***
-testcase1
-    ${a}    catenate    QQQQQQQ    wwww    ssssssss    dddddd
+testcase1_中文
+    ${a}    catenate    SEPARATOR=---    QQQQQQQ    wwww    ssssssss    中文
     log    ${a}
     ${a}    create List    dddd    ggggg    hhhh
     log many    ${a}
-    ${t}    get time    ssss
+    ${t}    get time
     sleep    0.1
     log    ${t}
     ${b}    set variable    59
@@ -25,18 +25,19 @@ testcase1
     ...    ELSE    log    不及格
     : FOR    ${i}    IN RANGE    10
     \    log    ${i}
-    ${d}    evaluate    random.randint(1000, 9999)    random
+    ${d}    evaluate    random.randint(1000, 9999)    random    #调用python的random模块下的randint方法
     log    ${d}
+    #    evaluate    os.system('python hello.py')    os    #执行python文件
 
 testcase2
-    import library    /Users/tataufo/Temp/testrb.py    #调用python
+    import library    /Users/tataufo/Temp/testrb.py    #导入标准和第三方模块或框架，之后就可以使用这个模块下的函数
     ${a}    evaluate    int(4)
     ${b}    evaluate    int(5)
     ${he}    add    ${a}    ${b}
     log    ${he}
 
 testcase3
-    take screenshot
+    take screenshot    #截图保存路径与日志路径一至
 
 testcase4
     ${dict1}    create dictionary    key1    value1    key2    value2
@@ -55,16 +56,24 @@ testcase4
 testcase5
     [Tags]    重要    # \ \ 的
     log    ${hi}
-    :FOR    ${n}    in    @{list1}
+    : FOR    ${n}    IN    @{list1}
     \    log    ${n}
-    ${EMPTY}
 
 testcase6
     循环    20    #使用用户关键字
     xh    5    #使用资源文件中的公共业务关键字
 
+testcase7
+    @{a}    Set Variable    3    2    1    #List变量的赋值：除了用Set Variable还可以用Create List
+    @{b}    Create List    1    2    3
+    @{c}    Create List    @{a}    @{b}    #二维list
+    Log Many    @{a}
+    Log Many    @{b}
+    log    ${a}    #List变量转换成Scalar
+    log    ${b}
+
 *** Keywords ***
 循环
     [Arguments]    ${num}
-    :FOR    ${i}    in range    ${num}
+    : FOR    ${i}    IN RANGE    ${num}
     \    log    ${i}

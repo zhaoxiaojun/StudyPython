@@ -1,0 +1,23 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+打开浏览器
+    [Arguments]    ${url}
+    open browser    ${url}
+
+输入搜索内容
+    [Arguments]    ${keyname}
+    input text    id=kw    ${keyname}
+
+点击搜索
+    click button    id=su
+    sleep    2
+
+校验内容
+    [Arguments]    ${keyname}
+    ${title}    get title
+    should contain    ${title}    ${keyname}
+
+关闭浏览器
+    close all browsers
